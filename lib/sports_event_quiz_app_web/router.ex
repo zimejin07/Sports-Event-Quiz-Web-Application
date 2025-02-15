@@ -17,9 +17,7 @@ defmodule SportsEventQuizAppWeb.Router do
   scope "/", SportsEventQuizAppWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
-
-    live "/events", EventListLive
+    live "/", EventListLive
     live "/quiz/:event_id", QuizLive
   end
 
