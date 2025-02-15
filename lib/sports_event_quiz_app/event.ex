@@ -1,6 +1,11 @@
 defmodule SportsEventQuizApp.Event do
   use Ecto.Schema
   import Ecto.Changeset
+  import Ecto.Query
+
+  alias SportsEventQuizApp.Repo
+  alias SportsEventQuizApp.Event
+  alias SportsEventQuizApp.Question
 
   schema "events" do
     field :info, :string
@@ -10,10 +15,20 @@ defmodule SportsEventQuizApp.Event do
     timestamps(type: :utc_datetime)
   end
 
-  @doc false
   def changeset(event, attrs) do
     event
     |> cast(attrs, [:name, :start_time, :info])
     |> validate_required([:name, :start_time, :info])
+  end
+
+  # Fetch all events
+  def list_events do
+    Repo.all(Event)
+  end
+
+  # Fetch all questions for a specific event
+  def list_questions(event_id) do
+    query = from q in Question, where: q.event_id == ^event_id
+    Repo.all(query)
   end
 end

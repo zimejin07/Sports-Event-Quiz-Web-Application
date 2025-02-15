@@ -1,6 +1,8 @@
 defmodule SportsEventQuizApp.UserAnswer do
   use Ecto.Schema
-  import Ecto.Changeset
+
+  alias SportsEventQuizApp.Repo
+  alias SportsEventQuizApp.UserAnswer
 
   schema "user_answers" do
     field :user_id, :string
@@ -10,10 +12,7 @@ defmodule SportsEventQuizApp.UserAnswer do
     timestamps(type: :utc_datetime)
   end
 
-  @doc false
-  def changeset(user_answer, attrs) do
-    user_answer
-    |> cast(attrs, [:user_id, :answer])
-    |> validate_required([:user_id, :answer])
+  def save_user_answer(user_id, question_id, answer) do
+    Repo.insert!(%UserAnswer{user_id: user_id, question_id: question_id, answer: answer})
   end
 end

@@ -18,6 +18,9 @@ defmodule SportsEventQuizAppWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live "/events", EventListLive
+    live "/quiz/:event_id", QuizLive
   end
 
   # Other scopes may use custom stacks.
