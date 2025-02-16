@@ -1,5 +1,6 @@
 defmodule SportsEventQuizAppWeb.QuizLive do
   use SportsEventQuizAppWeb, :live_view
+
   alias SportsEventQuizApp.{Event, UserAnswer}
   import Ecto.UUID, only: [generate: 0]
 
@@ -9,8 +10,6 @@ defmodule SportsEventQuizAppWeb.QuizLive do
       <%= if @current_question < length(@questions) do %>
         <div>
           <h3><%= Enum.at(@questions, @current_question).text %></h3>
-
-          <!-- Pass an empty map to the form (for handling the user_answer) -->
           <.form for={%{}} phx-submit="submit_answer">
             <%= for {option, _} <- Enum.to_list(Enum.at(@questions, @current_question).options) do %>
               <div>
@@ -42,6 +41,16 @@ defmodule SportsEventQuizAppWeb.QuizLive do
         current_question: 0,
         user_id: user_id
       )}
+  end
+
+  def handle_params(params, _uri, socket) do
+    current_question =
+      case Map.get(params, "question") do
+        nil -> 0  # Default to first question if no "question" param is present
+        question_index -> String.to_integer(question_index)
+      end
+
+    {:noreply, assign(socket, current_question: current_question)}
   end
 
   def handle_event("submit_answer", %{"answer" => answer}, socket) do

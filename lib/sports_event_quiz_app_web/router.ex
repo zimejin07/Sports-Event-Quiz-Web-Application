@@ -19,6 +19,7 @@ defmodule SportsEventQuizAppWeb.Router do
 
     live "/", EventListLive
     live "/quiz/:event_id", QuizLive
+    live "/summary", SummaryLive
   end
 
   # Other scopes may use custom stacks.
