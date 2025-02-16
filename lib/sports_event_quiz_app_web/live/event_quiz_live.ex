@@ -6,29 +6,30 @@ defmodule SportsEventQuizAppWeb.QuizLive do
 
   def render(assigns) do
     ~H"""
-    <div>
+    <div class="quiz-container">
       <%= if @current_question < length(@questions) do %>
-        <div>
-          <h3><%= Enum.at(@questions, @current_question).text %></h3>
-          <.form for={%{}} phx-submit="submit_answer">
+        <div class="question-container">
+          <h3 class="question-text"><%= Enum.at(@questions, @current_question).text %></h3>
+          <.form for={%{}} phx-submit="submit_answer" class="answer-form">
             <%= for {option, _} <- Enum.to_list(Enum.at(@questions, @current_question).options) do %>
-              <div>
-                <input type="radio" name="answer" value={option} />
-                <.label><%= option %></.label>
+              <div class="option-container">
+                <input type="radio" name="answer" value={option} class="answer-option" />
+                <.label class="answer-label"><%= option %></.label>
               </div>
             <% end %>
-            <button type="submit">Next</button>
+            <button type="submit" class="submit-button">Next</button>
           </.form>
         </div>
       <% else %>
-        <div>
-          <h2>Quiz Completed!</h2>
-          <p>Thank you for participating.</p>
+        <div class="completion-container">
+          <h2 class="completion-title">Quiz Completed!</h2>
+          <p class="completion-message">Thank you for participating.</p>
         </div>
       <% end %>
     </div>
     """
   end
+
 
   def mount(%{"event_id" => event_id}, _session, socket) do
     questions = Event.list_questions(event_id)

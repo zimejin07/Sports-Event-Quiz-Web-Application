@@ -1646,7 +1646,7 @@ select {
   scrollbar-gutter: stable;
 }
 
-/* This file is for your main application CSS */
+/* Event Page */
 
 .event-card {
   border-radius: 0.25rem;
@@ -1675,6 +1675,133 @@ select {
 .start-button:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
+}
+
+/* Quiz Page */
+
+.quiz-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f9;
+  border-radius: 8px;
+}
+
+.question-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.question-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.answer-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.option-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.answer-option {
+  margin-right: 10px;
+}
+
+.answer-label {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 1rem;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.completion-container {
+  text-align: center;
+}
+
+.completion-title {
+  font-size: 2rem;
+  color: #28a745;
+  margin-bottom: 10px;
+}
+
+.completion-message {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Summary Page */
+
+.quiz-summary-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.quiz-summary-title {
+  font-size: 2rem;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.answer-summary {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.question-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.answer-text, .event-text {
+  font-size: 1rem;
+  color: #666;
+}
+
+.back-link {
+  display: block;
+  text-align: center;
+  margin-top: 30px;
+  font-size: 1.1rem;
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
 }
 
 .hover\:cursor-pointer:hover {
@@ -1901,3 +2028,4 @@ select {
     padding-bottom: 8rem;
   }
 }
+

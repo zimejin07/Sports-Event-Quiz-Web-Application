@@ -5,17 +5,18 @@ defmodule SportsEventQuizAppWeb.SummaryLive do
 
   def render(assigns) do
     ~H"""
-    <div>
-      <h2>Quiz Summary</h2>
+    <div class="quiz-summary-container">
+      <h2 class="quiz-summary-title">Quiz Summary</h2>
+
       <%= for {question, event, answer} <- @answers do %>
         <div class="answer-summary">
-          <h3><%= question.text %></h3>
-          <p>Answer: <%= answer %></p>
-          <p>Event: <%= event.name %></p>
+          <h3 class="question-text"><%= question.text %></h3>
+          <p class="answer-text"><strong>Answer:</strong> <%= answer %></p>
+          <p class="event-text"><strong>Event:</strong> <%= event.name %></p>
         </div>
       <% end %>
 
-      <a href="/">Back to Home</a>
+      <a href="/" class="back-link">Back to Home</a>
     </div>
     """
   end
