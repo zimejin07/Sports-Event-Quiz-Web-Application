@@ -61,7 +61,7 @@ defmodule SportsEventQuizAppWeb.QuizLive do
     if socket.assigns.current_question + 1 < length(socket.assigns.questions) do
       {:noreply, push_patch(socket, to: "/quiz/#{socket.assigns.event_id}?question=#{socket.assigns.current_question + 1}")}
     else
-      {:noreply, push_navigate(socket, to: "/summary")}
+      {:noreply, push_navigate(socket, to: "/summary?user_id=#{socket.assigns.user_id}")}
     end
   end
 end
