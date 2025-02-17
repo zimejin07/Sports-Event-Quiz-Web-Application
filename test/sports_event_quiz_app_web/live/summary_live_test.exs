@@ -3,7 +3,16 @@ defmodule SportsEventQuizAppWeb.SummaryLiveTest do
 
   import Mox
   import Phoenix.LiveViewTest
-  alias SportsEventQuizApp.{UserAnswerMock, EventMock, QuestionMock}
+
+  alias SportsEventQuizApp.UserAnswerMock
+  alias SportsEventQuizApp.EventMock
+  alias SportsEventQuizApp.QuestionMock
+
+  setup do
+    Mox.verify_on_exit!()
+
+    :ok
+  end
 
   test "renders summary", %{conn: conn} do
     question = %{id: 1, text: "Who won?", event_id: 1}
@@ -11,8 +20,8 @@ defmodule SportsEventQuizAppWeb.SummaryLiveTest do
     answer = %{question_id: 1, answer: "Chiefs"}
 
     expect(UserAnswerMock, :list_user_answers, fn _ -> [answer] end)
-    expect(QuestionMock, :get_question, fn _ -> question end)
-    expect(EventMock, :get_event, fn _ -> event end)
+    expect(QuestionMock, :list_questions, fn _ -> [question] end)
+    expect(EventMock, :list_events, fn _ -> [event] end)
 
     {:ok, view, _html} = live(conn, "/summary?user_id=123")
 

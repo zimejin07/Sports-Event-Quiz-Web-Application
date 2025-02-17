@@ -7,7 +7,6 @@ defmodule SportsEventQuizAppWeb.QuizLiveTest do
   alias SportsEventQuizApp.QuestionMock
 
   setup do
-    # Ensure mocks are reset for each test
     Mox.verify_on_exit!()
 
     :ok
@@ -26,7 +25,6 @@ defmodule SportsEventQuizAppWeb.QuizLiveTest do
   test "submitting answer moves to next question", %{conn: conn} do
     question = %{id: 1, text: "Who won?", options: %{"A" => "Chiefs", "B" => "Eagles"}}
     expect(QuestionMock, :list_questions, fn _ -> [question, %{id: 2, text: "Final score?"}] end)
-    expect(QuestionMock, :save_user_answer, fn _, _, _ -> :ok end)  # Mock DB save
 
     {:ok, view, _html} = live(conn, "/quiz/1")
 

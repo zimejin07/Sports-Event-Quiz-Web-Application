@@ -4,28 +4,23 @@ defmodule SportsEventQuizAppWeb.EventListLiveTest do
   import Mox
   import Phoenix.LiveViewTest
 
-  alias SportsEventQuizApp.Event
+  alias SportsEventQuizApp.EventMock
 
   setup do
-    # Ensure mocks are reset for each test
     Mox.verify_on_exit!()
 
     :ok
   end
 
   test "renders event list", %{conn: conn} do
-    events = [
-      %Event{id: 1, name: "Super Bowl", info: "Biggest game!", start_time: ~N[2025-02-10 18:00:00]},
-      %Event{id: 1, name: "Football Match", info: "Match at 5 PM", start_time: ~N[2025-02-17 17:00:00]},
-      %Event{id: 2, name: "Basketball Game", info: "Game at 7 PM", start_time: ~N[2025-02-17 19:00:00]}
-    ]
+    event = %{id: 1, name: "Super Bowl", info: "Biggest game!", start_time: ~N[2025-02-10 18:00:00]}
 
     # Set expectation for the mock function
-    expect(EventMock, :list_events, fn -> events end)
+    expect(EventMock, :list_events, fn -> [event] end)
 
     {:ok, view, _html} = live(conn, "/events")
 
-    assert has_element?(view, "h1", "Upcoming Sports Events")
+    assert has_element?(view, "h1", "Upcoming Sports Events 🚀")
     assert has_element?(view, "h2", "Super Bowl")
   end
 
