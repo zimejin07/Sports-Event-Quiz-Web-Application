@@ -27,6 +27,9 @@ defmodule SportsEventQuizAppWeb.SummaryLive do
               <h3 class="text-lg font-semibold"><%= question.text %></h3>
               <p class="text-sm"><strong>Your Answer:</strong> <%= answer %></p>
               <p class="text-sm"><strong>Event:</strong> <%= event.name %></p>
+              <p class="text-sm font-bold mt-2 text-green-300">
+              ✅ Correct!
+            </p>
             </div>
           <% end %>
         </div>
