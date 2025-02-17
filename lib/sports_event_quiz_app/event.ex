@@ -11,6 +11,7 @@ defmodule SportsEventQuizApp.Event do
     field :info, :string
     field :name, :string
     field :start_time, :naive_datetime
+    field :image_url, :string
 
     timestamps(type: :utc_datetime)
   end
@@ -20,9 +21,10 @@ defmodule SportsEventQuizApp.Event do
 
   def changeset(event, attrs) do
     event
-    |> cast(attrs, [:name, :start_time, :info])
-    |> validate_required([:name, :start_time, :info])
+    |> cast(attrs, [:name, :start_time, :info, :image_url])
+    |> validate_required([:name, :start_time, :info, :image_url])
   end
+
 
   # Fetch all events
   def list_events do

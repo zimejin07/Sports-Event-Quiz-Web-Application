@@ -5,6 +5,7 @@ defmodule SportsEventQuizAppWeb.EventListLive do
 
   def mount(_params, _session, socket) do
     events = Event.list_events()
+    IO.inspect(events, label: "events list")
     {:ok, assign(socket, events: events)}
   end
 
@@ -25,8 +26,8 @@ defmodule SportsEventQuizAppWeb.EventListLive do
 
               <% # Image Section with Overlay %>
               <div class="relative">
-                <img src="https://www.joe.co.uk/uploads/2024/03/24_023_Manchester.png" alt="Event Image"
-                     class="w-full h-48 object-cover opacity-85">
+                    <img src={event.image_url} alt={event.name <> " image"} class="w-full h-48 object-cover opacity-85"/>
+
                 <div class="absolute top-2 left-2 bg-gradient-to-r from-black to-transparent text-green-300 text-xs px-3 py-1 rounded">
                   🏆 Premier League
                 </div>

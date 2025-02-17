@@ -6,7 +6,8 @@ alias SportsEventQuizApp.Question
 event1 = Repo.insert!(%Event{
   name: "Manchester City vs Manchester United",
   start_time: ~N[2024-06-01 18:00:00],
-  info: "Answer 5/5 questions and win 50 USDT"
+  info: "Answer 5/5 questions and win 50 USDT",
+  image_url: "https://assets.goal.com/images/v3/blt304c621fb6bd82ff/Big_Match_Man_City_vs_Man_United.jpg"
 })
 
 # Insert Questions for Event 1
@@ -44,7 +45,8 @@ Repo.insert!(%Question{
 event2 = Repo.insert!(%Event{
   name: "Chelsea vs Arsenal",
   start_time: ~N[2024-06-05 20:00:00],
-  info: "Answer 5/5 questions and win 50 USDT"
+  info: "Answer 5/5 questions and win 50 USDT",
+  image_url: "https://i.ytimg.com/vi/1dGfYUwRiTM/maxresdefault.jpg"
 })
 
 # Insert Questions for Event 2
@@ -82,7 +84,8 @@ Repo.insert!(%Question{
 event3 = Repo.insert!(%Event{
   name: "Barcelona vs Real Madrid",
   start_time: ~N[2024-06-10 22:00:00],
-  info: "Answer 5/5 questions and win 50 USDT"
+  info: "Answer 5/5 questions and win 50 USDT",
+  image_url: "https://m.media-amazon.com/images/M/MV5BYjZmNzE5OWYtY2QyOS00YzBlLTlhMzItZjg4YjA4Y2ViYzkxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
 })
 
 # Insert Questions for Event 3
@@ -120,7 +123,8 @@ Repo.insert!(%Question{
 event4 = Repo.insert!(%Event{
   name: "Juventus vs AC Milan",
   start_time: ~N[2024-06-12 18:30:00],
-  info: "Answer 5/5 questions and win 50 USDT"
+  info: "Answer 5/5 questions and win 50 USDT",
+  image_url: "https://assets.goal.com/images/v3/blt2a99ce450a12e91d/Juventus%20vs.%20Milan%20preview.jpg?"
 })
 
 # Insert Questions for Event 4
