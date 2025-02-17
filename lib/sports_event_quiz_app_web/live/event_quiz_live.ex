@@ -6,30 +6,59 @@ defmodule SportsEventQuizAppWeb.QuizLive do
 
   def render(assigns) do
     ~H"""
-    <div class="quiz-container">
-      <%= if @current_question < length(@questions) do %>
-        <div class="question-container">
-          <h3 class="question-text"><%= Enum.at(@questions, @current_question).text %></h3>
-          <.form for={%{}} phx-submit="submit_answer" class="answer-form">
-            <%= for {option, _} <- Enum.to_list(Enum.at(@questions, @current_question).options) do %>
-              <div class="option-container">
-                <input type="radio" name="answer" value={option} class="answer-option" />
-                <label class="answer-label"><%= option %></label>
+    <div class="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-6">
+      <div class="w-full max-w-2xl bg-gray-800 p-6 rounded-lg shadow-xl animate-fade-in">
+
+        <% # Progress Indicator %>
+        <div class="mb-4 text-center">
+          <p class="text-sm text-gray-400">Question <%= @current_question + 1 %> of <%= length(@questions) %></p>
+          <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
+            <div class="h-2 bg-green-500 rounded-full transition-all"
+                 style={"width: #{(@current_question + 1) * 100 / length(@questions)}%"}></div>
+          </div>
+        </div>
+
+        <%= if @current_question < length(@questions) do %>
+          <div class="text-center">
+            <h3 class="text-2xl font-bold mb-4">
+              <%= Enum.at(@questions, @current_question).text %>
+            </h3>
+
+            <.form for={%{}} phx-submit="submit_answer">
+              <div class="grid grid-cols-2 gap-4 animate-slide-in">
+                <%= for {option, _} <- Enum.to_list(Enum.at(@questions, @current_question).options) do %>
+                  <label class="block cursor-pointer">
+                    <input type="radio" name="answer" value={option} class="hidden peer" />
+                    <div class="flex items-center justify-center p-4 border border-gray-600 rounded-lg bg-gray-700
+                                peer-checked:bg-green-500 peer-checked:text-white transition-all hover:scale-105">
+                      <%= option %>
+                    </div>
+                  </label>
+                <% end %>
               </div>
-            <% end %>
-            <button type="submit" class="submit-button">Next</button>
-          </.form>
-        </div>
-      <% else %>
-        <div class="completion-container">
-          <h2 class="completion-title">Quiz Completed!</h2>
-          <p class="completion-message">Thank you for participating.</p>
-        </div>
-      <% end %>
+
+              <div class="flex justify-between mt-6">
+                <% # Disable "Previous" on the first question %>
+                <button type="button" phx-click="prev_question"
+                        class={"px-6 py-2 rounded-lg " <> if @current_question == 0, do: "bg-gray-700 text-gray-500 cursor-not-allowed", else: "bg-gray-700 hover:bg-gray-600 text-white"}>
+                  Previous
+                </button>
+                <button type="submit" class="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg animate-pulse">
+                  Next
+                </button>
+              </div>
+            </.form>
+          </div>
+        <% else %>
+          <div class="text-center animate-fade-in">
+            <h2 class="text-3xl font-bold mb-4">Quiz Completed! 🎉</h2>
+            <p class="text-lg">Thank you for participating.</p>
+          </div>
+        <% end %>
+      </div>
     </div>
     """
   end
-
 
   def mount(%{"event_id" => event_id}, _session, socket) do
     questions = Event.list_questions(event_id)

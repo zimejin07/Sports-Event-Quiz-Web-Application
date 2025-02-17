@@ -5,52 +5,55 @@ defmodule SportsEventQuizAppWeb.SummaryLive do
 
   def render(assigns) do
     ~H"""
-    <div class="quiz-summary-container">
-      <h2 class="quiz-summary-title">Quiz Summary</h2>
+    <div class="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-6">
+      <div class="w-full max-w-3xl bg-gray-800 p-8 rounded-lg shadow-xl animate-fade-in">
 
-      <%= for {question, event, answer} <- @answers do %>
-        <div class="answer-summary">
-          <h3 class="question-text"><%= question.text %></h3>
-          <p class="answer-text"><strong>Answer:</strong> <%= answer %></p>
-          <p class="event-text"><strong>Event:</strong> <%= event.name %></p>
+        <% # Quiz Summary Title %>
+        <div class="text-center mb-6">
+          <h2 class="text-3xl font-bold text-green-400 drop-shadow-md">Quiz Summary</h2>
+          <p class="text-gray-400 mt-2">Here's how you did! 🎉</p>
         </div>
-      <% end %>
 
-      <a href="/" class="back-link">Back to Home</a>
+        <% # Dynamic Score Section %>
+        <div class="bg-gray-700 p-4 rounded-lg flex justify-between items-center shadow-lg">
+          <p class="text-lg">Total Score:</p>
+          <span class="text-2xl font-bold text-green-400">100</span>
+        </div>
+
+        <% # Summary of Answers %>
+        <div class="mt-6 space-y-4">
+          <%= for {question, event, answer} <- @answers do %>
+            <div class="p-4 rounded-lg shadow-lg transition-all animate-slide-in bg-green-600">
+              <h3 class="text-lg font-semibold"><%= question.text %></h3>
+              <p class="text-sm"><strong>Your Answer:</strong> <%= answer %></p>
+              <p class="text-sm"><strong>Event:</strong> <%= event.name %></p>
+            </div>
+          <% end %>
+        </div>
+
+        <% # Back to Home Button %>
+        <div class="mt-6 text-center">
+          <a href="/" class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition-all shadow-lg">
+            Back to Home
+          </a>
+        </div>
+      </div>
     </div>
     """
   end
 
   def mount(%{"user_id" => user_id}, _session, socket) do
-    # Log the user_id to the console
-    IO.inspect(user_id, label: "User ID")
-
     # Fetch user answers
     user_answers = UserAnswer.list_user_answers(user_id)
-
-    # Log the user answers
-    IO.inspect(user_answers, label: "User Answers")
 
     # Fetch questions and the associated event for each answer
     answers =
       user_answers
       |> Enum.map(fn ua ->
-        # Log the individual user answer
-        IO.inspect(ua, label: "User Answer")
-
-        # Find the question
         question = Repo.get(Question, ua.question_id)
-        IO.inspect(question, label: "Question")
-
-        # Fetch the event associated with the question
         event = Repo.get(Event, question.event_id)
-        IO.inspect(event, label: "Event")
-
-        # Return the tuple with question, event, and answer
         {question, event, ua.answer}
       end)
-
-    # Assign answers to the socket
     {:ok, assign(socket, answers: answers)}
   end
 end
