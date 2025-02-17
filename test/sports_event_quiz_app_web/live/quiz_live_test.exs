@@ -15,7 +15,8 @@ defmodule SportsEventQuizAppWeb.QuizLiveTest do
 
   test "renders first question", %{conn: conn} do
     question = %{id: 1, text: "Who won the last Super Bowl?", options: %{"A" => "Chiefs", "B" => "Eagles"}}
-    QuestionMock.list_questions = fn _ -> [question] end
+
+    expect(QuestionMock, :list_questions, fn _ -> [question] end)
 
     {:ok, view, _html} = live(conn, "/quiz/1")
 
@@ -24,8 +25,8 @@ defmodule SportsEventQuizAppWeb.QuizLiveTest do
 
   test "submitting answer moves to next question", %{conn: conn} do
     question = %{id: 1, text: "Who won?", options: %{"A" => "Chiefs", "B" => "Eagles"}}
-    QuestionMock.list_questions = fn _ -> [question, %{id: 2, text: "Final score?"}] end
-    QuestionMock.save_user_answer = fn _, _, _ -> :ok end  # Mock DB save
+    expect(QuestionMock, :list_questions, fn _ -> [question, %{id: 2, text: "Final score?"}] end)
+    expect(QuestionMock, :save_user_answer, fn _, _, _ -> :ok end)  # Mock DB save
 
     {:ok, view, _html} = live(conn, "/quiz/1")
 

@@ -1,10 +1,7 @@
-ExUnit.start()
 Ecto.Adapters.SQL.Sandbox.mode(SportsEventQuizApp.Repo, :manual)
 
 # Start Mox application if not already started
-unless Application.started_applications() |> Enum.any?(fn {app, _} -> app == :mox end) do
-  Application.ensure_all_started(:mox)
-end
+Application.ensure_all_started(:mox)
 
 # Require mocks file and handle potential errors
 mocks_file = Path.join([__DIR__, "support", "mocks.ex"])
@@ -15,3 +12,5 @@ case Code.require_file(mocks_file) do
   _ ->
     :ok
 end
+
+ExUnit.start()

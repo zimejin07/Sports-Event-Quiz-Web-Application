@@ -1,5 +1,7 @@
 defmodule SportsEventQuizAppWeb.SummaryLiveTest do
   use SportsEventQuizAppWeb.ConnCase, async: true
+
+  import Mox
   import Phoenix.LiveViewTest
   alias SportsEventQuizApp.{UserAnswerMock, EventMock, QuestionMock}
 
@@ -8,9 +10,9 @@ defmodule SportsEventQuizAppWeb.SummaryLiveTest do
     event = %{id: 1, name: "Super Bowl"}
     answer = %{question_id: 1, answer: "Chiefs"}
 
-    UserAnswerMock.list_user_answers = fn _ -> [answer] end
-    QuestionMock.get_question = fn _ -> question end
-    EventMock.get_event = fn _ -> event end
+    expect(UserAnswerMock, :list_user_answers, fn _ -> [answer] end)
+    expect(QuestionMock, :get_question, fn _ -> question end)
+    expect(EventMock, :get_event, fn _ -> event end)
 
     {:ok, view, _html} = live(conn, "/summary?user_id=123")
 
