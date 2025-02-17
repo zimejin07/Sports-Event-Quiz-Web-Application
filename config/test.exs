@@ -7,7 +7,7 @@ import Config
 # Run `mix help test` for more information.
 config :sports_event_quiz_app, SportsEventQuizApp.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "User123",
   hostname: "localhost",
   database: "sports_event_quiz_app_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,

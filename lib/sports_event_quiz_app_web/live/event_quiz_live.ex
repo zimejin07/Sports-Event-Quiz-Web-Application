@@ -14,7 +14,7 @@ defmodule SportsEventQuizAppWeb.QuizLive do
             <%= for {option, _} <- Enum.to_list(Enum.at(@questions, @current_question).options) do %>
               <div class="option-container">
                 <input type="radio" name="answer" value={option} class="answer-option" />
-                <.label class="answer-label"><%= option %></.label>
+                <label class="answer-label"><%= option %></label>
               </div>
             <% end %>
             <button type="submit" class="submit-button">Next</button>

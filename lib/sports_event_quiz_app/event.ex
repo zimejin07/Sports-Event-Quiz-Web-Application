@@ -15,6 +15,9 @@ defmodule SportsEventQuizApp.Event do
     timestamps(type: :utc_datetime)
   end
 
+  @callback list_events() :: list()
+  @callback list_questions(integer()) :: list()
+
   def changeset(event, attrs) do
     event
     |> cast(attrs, [:name, :start_time, :info])
