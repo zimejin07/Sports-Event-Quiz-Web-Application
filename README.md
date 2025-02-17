@@ -19,6 +19,10 @@ Testing Events & State Handling
 * Ensuring the phx-submit="submit_answer" event processes inputs properly.
 * Tested edge cases like submitting without selecting an answer.
 
+![question_view](https://github.com/user-attachments/assets/ef2f0adb-6bc3-41e8-809d-e3f6d7f724b1)
+
+![event_page](https://github.com/user-attachments/assets/cefdf005-30e4-499b-b4be-2cff56f2d0f4)
+
 ## Learn more
 
   * Official website: https://www.phoenixframework.org/
