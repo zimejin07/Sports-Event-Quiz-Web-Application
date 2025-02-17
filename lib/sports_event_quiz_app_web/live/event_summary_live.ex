@@ -43,10 +43,8 @@ defmodule SportsEventQuizAppWeb.SummaryLive do
   end
 
   def mount(%{"user_id" => user_id}, _session, socket) do
-    # Fetch user answers
     user_answers = UserAnswer.list_user_answers(user_id)
 
-    # Fetch questions and the associated event for each answer
     answers =
       user_answers
       |> Enum.map(fn ua ->

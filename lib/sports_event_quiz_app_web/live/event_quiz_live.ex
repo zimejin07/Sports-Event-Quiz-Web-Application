@@ -82,7 +82,7 @@ defmodule SportsEventQuizAppWeb.QuizLive do
   def handle_params(params, _uri, socket) do
     current_question =
       case Map.get(params, "question") do
-        nil -> 0  # Default to first question if no "question" param is present
+        nil -> 0
         question_index -> String.to_integer(question_index)
       end
 

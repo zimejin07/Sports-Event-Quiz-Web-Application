@@ -2,7 +2,7 @@ alias SportsEventQuizApp.Repo
 alias SportsEventQuizApp.Event
 alias SportsEventQuizApp.Question
 
-# Insert Event 1: Manchester City vs Manchester United
+# Event 1: Manchester City vs Manchester United
 event1 = Repo.insert!(%Event{
   name: "Manchester City vs Manchester United",
   start_time: ~N[2024-06-01 18:00:00],
@@ -10,7 +10,7 @@ event1 = Repo.insert!(%Event{
   image_url: "https://assets.goal.com/images/v3/blt304c621fb6bd82ff/Big_Match_Man_City_vs_Man_United.jpg"
 })
 
-# Insert Questions for Event 1
+# Questions for Event 1
 Repo.insert!(%Question{
   event_id: event1.id,
   text: "How many goals will be scored?",
@@ -41,7 +41,7 @@ Repo.insert!(%Question{
   options: %{"No Red Card" => "No Red Card", "Player A" => "Player A", "Player B" => "Player B", "Player C" => "Player C"}
 })
 
-# Insert Event 2: Chelsea vs Arsenal
+# Event 2: Chelsea vs Arsenal
 event2 = Repo.insert!(%Event{
   name: "Chelsea vs Arsenal",
   start_time: ~N[2024-06-05 20:00:00],
@@ -49,7 +49,7 @@ event2 = Repo.insert!(%Event{
   image_url: "https://i.ytimg.com/vi/1dGfYUwRiTM/maxresdefault.jpg"
 })
 
-# Insert Questions for Event 2
+# Questions for Event 2
 Repo.insert!(%Question{
   event_id: event2.id,
   text: "How many goals will be scored?",
@@ -80,7 +80,7 @@ Repo.insert!(%Question{
   options: %{"No Red Card" => "No Red Card", "Player X" => "Player X", "Player Y" => "Player Y", "Player Z" => "Player Z"}
 })
 
-# Insert Event 3: Barcelona vs Real Madrid
+# Event 3: Barcelona vs Real Madrid
 event3 = Repo.insert!(%Event{
   name: "Barcelona vs Real Madrid",
   start_time: ~N[2024-06-10 22:00:00],
@@ -88,7 +88,7 @@ event3 = Repo.insert!(%Event{
   image_url: "https://m.media-amazon.com/images/M/MV5BYjZmNzE5OWYtY2QyOS00YzBlLTlhMzItZjg4YjA4Y2ViYzkxXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
 })
 
-# Insert Questions for Event 3
+# Questions for Event 3
 Repo.insert!(%Question{
   event_id: event3.id,
   text: "How many goals will be scored?",
@@ -119,7 +119,7 @@ Repo.insert!(%Question{
   options: %{"No Red Card" => "No Red Card", "Player M" => "Player M", "Player N" => "Player N", "Player O" => "Player O"}
 })
 
-# Insert Event 4: Juventus vs AC Milan
+# Event 4: Juventus vs AC Milan
 event4 = Repo.insert!(%Event{
   name: "Juventus vs AC Milan",
   start_time: ~N[2024-06-12 18:30:00],
@@ -127,7 +127,7 @@ event4 = Repo.insert!(%Event{
   image_url: "https://assets.goal.com/images/v3/blt2a99ce450a12e91d/Juventus%20vs.%20Milan%20preview.jpg?"
 })
 
-# Insert Questions for Event 4
+# Questions for Event 4
 Repo.insert!(%Question{
   event_id: event4.id,
   text: "How many goals will be scored?",

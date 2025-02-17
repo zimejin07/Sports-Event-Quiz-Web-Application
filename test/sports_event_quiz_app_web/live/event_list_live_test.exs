@@ -15,7 +15,6 @@ defmodule SportsEventQuizAppWeb.EventListLiveTest do
   test "renders event list", %{conn: conn} do
     event = %{id: 1, name: "Super Bowl", info: "Biggest game!", start_time: ~N[2025-02-10 18:00:00]}
 
-    # Set expectation for the mock function
     expect(EventMock, :list_events, fn -> [event] end)
 
     {:ok, view, _html} = live(conn, "/events")
