@@ -1,32 +1,64 @@
-# SportsEventQuizApp
+Sports Event Quiz App
 
-To start your Phoenix server:
+Instructions for Running the Sports Event Quiz App
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+1. Clone the Repository
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+If you haven't already cloned the repository, use the following command:
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+        git clone https://github.com/your_username/sports_event_quiz_app.git
 
-Test Implemented:
-* Unit Tests for Core Logic
-* Validation of question navigation (e.g., progressing to the next question).
-* Ensuring selected answers are stored correctly.
-* Verifying quiz completion logic.
+        cd sports_event_quiz_app
 
-Testing Events & State Handling
-* Ensuring the phx-submit="submit_answer" event processes inputs properly.
-* Tested edge cases like submitting without selecting an answer.
+2. Install Dependencies
 
-![question_view](https://github.com/user-attachments/assets/ef2f0adb-6bc3-41e8-809d-e3f6d7f724b1)
+         mix deps.get
 
-![event_page](https://github.com/user-attachments/assets/cefdf005-30e4-499b-b4be-2cff56f2d0f4)
+3. The app uses an Ecto database to store event data:
+   
+         mix ecto.create
 
-## Learn more
+         mix ecto.migrate
 
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+Insert Seed Data:
+
+    mix run priv/repo/seeds.exs
+
+4. Start the Phoenix Server:
+
+        mix phx.server
+
+5. Access the Application
+
+     http://localhost:4000
+
+Test Cases: 
+
+*      Ensuring selected answers are stored correctly.
+
+*      Verifying the quiz completion logic.Validation of question navigation 
+
+*      Verifying the quiz completion logic.
+
+*      Ensuring that the phx-submit="submit_answer" event processes inputs correctly.
+
+*      Edge cases like submitting without selecting an answer have been tested.
+
+Design Reference:
+
+      ![question_view](https://github.com/user-attachments/assets/ef2f0adb-6bc3-41e8-809d-e3f6d7f724b1)
+
+
+      ![event_page](https://github.com/user-attachments/assets/cefdf005-30e4-499b-b4be-2cff56f2d0f4)
+
+References
+
+Official Phoenix Framework Website: https://www.phoenixframework.org/
+
+Phoenix Guides: https://hexdocs.pm/phoenix/overview.html
+
+Phoenix Docs: https://hexdocs.pm/phoenix
+
+Phoenix Forum: https://elixirforum.com/c/phoenix-forum
+
+Phoenix GitHub Source: https://github.com/phoenixframework/phoenix
