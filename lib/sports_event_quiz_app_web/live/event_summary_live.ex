@@ -17,7 +17,7 @@ defmodule SportsEventQuizAppWeb.SummaryLive do
         <% # Dynamic Score Section %>
         <div class="bg-gray-700 p-4 rounded-lg flex justify-between items-center shadow-lg">
           <p class="text-lg">Total Score:</p>
-          <span class="text-2xl font-bold text-green-400">100</span>
+          <span class="text-2xl font-bold text-green-400">5/5</span>
         </div>
 
         <% # Summary of Answers %>
