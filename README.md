@@ -6,9 +6,9 @@ Instructions for Running the Sports Event Quiz App
 
 If you haven't already cloned the repository, use the following command:
 
-        git clone https://github.com/zimejin07/sports_event_quiz_app.git
+        git clone https://github.com/zimejin07/sports-event-quiz-web-application.git
 
-        cd sports_event_quiz_app
+        cd sports-event-quiz-web-application
 
 2. Install Dependencies
 
