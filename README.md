@@ -51,8 +51,6 @@ Design Reference:
 
 ![event_page](https://github.com/user-attachments/assets/cefdf005-30e4-499b-b4be-2cff56f2d0f4)
 
-Got it! Here's a **text-only** list of the potential improvements that you can copy and add to your README for future reference:  
-
 ---
 
 ### **Potential Improvements**  
