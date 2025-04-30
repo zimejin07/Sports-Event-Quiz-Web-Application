@@ -1,94 +1,109 @@
-Sports Event Quiz App
+# 🏟️ Sports Event Quiz Web Application
 
-Instructions for Running the Sports Event Quiz App
+An interactive quiz app built with the **Phoenix Framework**, where users can take quizzes related to sports events. It features real-time updates via **LiveView** and uses **Ecto** with a PostgreSQL database.
 
-1. Clone the Repository
+---
 
-If you haven't already cloned the repository, use the following command:
+## 🚀 Getting Started
 
-        git clone https://github.com/zimejin07/sports-event-quiz-web-application.git
+### 1. Clone the Repository
 
-        cd sports-event-quiz-web-application
+```bash
+git clone https://github.com/zimejin07/sports-event-quiz-web-application.git
+cd sports-event-quiz-web-application
+```
 
-2. Install Dependencies
+### 2. Install Dependencies
 
-         mix deps.get
+```bash
+mix deps.get
+```
 
-3. The app uses an Ecto database to store event data:
-   
-         mix ecto.create
+### 3. Set Up the Database
 
-         mix ecto.migrate
+```bash
+mix ecto.create
+mix ecto.migrate
+mix run priv/repo/seeds.exs
+```
 
-Insert Seed Data:
+> Ensure PostgreSQL is installed and running before running the above commands.
 
-    mix run priv/repo/seeds.exs
+### 4. Start the Phoenix Server
 
-4. Start the Phoenix Server:
+```bash
+mix phx.server
+```
 
-        mix phx.server
+### 5. Access the App
 
-5. Access the Application
+Open [http://localhost:4000](http://localhost:4000) in your browser.
 
-     http://localhost:4000
+---
 
-Test Cases: 
+## 🧪 Test Cases
 
-*      Ensuring selected answers are stored correctly.
+- ✅ Selected answers are stored correctly
+- ✅ Quiz completion logic validated
+- ✅ Navigation between questions tested
+- ✅ `phx-submit="submit_answer"` event properly processes inputs
+- ✅ Edge cases (e.g., submitting with no answer selected) handled
 
-*      Verifying the quiz completion logic.Validation of question navigation 
+---
 
-*      Verifying the quiz completion logic.
+## 🖼️ Design Reference
 
-*      Ensuring that the phx-submit="submit_answer" event processes inputs correctly.
-
-*      Edge cases like submitting without selecting an answer have been tested.
-
-Design Reference:
-
+**Question View**  
 ![question_view](https://github.com/user-attachments/assets/ef2f0adb-6bc3-41e8-809d-e3f6d7f724b1)
 
-
+**Event Page**  
 ![event_page](https://github.com/user-attachments/assets/cefdf005-30e4-499b-b4be-2cff56f2d0f4)
 
 ---
 
-### **Potential Improvements**  
+## 🔧 Potential Improvements
 
-1. **PostgreSQL Setup Instructions**  
-   - To include steps to install PostgreSQL on macOS, Windows, and Linux.  
-   - To provide commands to start the PostgreSQL service.  
-   - To include SQL commands to create a user, database, and set permissions.  
+### 1. PostgreSQL Setup Instructions
 
-2. **Docker Support**  
-   - Add a `docker-compose.yml` file to easily spin up a PostgreSQL container.  
-   - Include instructions to run `docker-compose up -d` for quick database setup.  
+- Add guides for installing PostgreSQL on macOS, Windows, and Linux
+- Include steps to create user/database and set roles/permissions
 
-3. **Fix UI/UX Issues**  
-   - Ensure the "Live Quiz Available" tag doesn’t overlap with the quiz button when the event name is long.  
-   - Align the "Start Quiz" button to the bottom of the card, regardless of event name length.  
-   - Format timestamps properly for the user’s timezone instead of displaying raw values.  
+### 2. Docker Support
 
-4. **Fix Navigation & Stability Issues**  
-   - Prevent the "Previous" button from crashing the page.  
-   - Disable the "Next" button until an answer is selected to avoid crashes.  
-   - Ensure LiveView state is preserved when navigating between questions.  
+- Add a `docker-compose.yml` for PostgreSQL container
+- Provide instructions:
+  ```bash
+  docker-compose up -d
+  ```
 
-5. **Improve Database Schema**  
-   - Store answers as a JSON object as an array of strings for better readability and query performance instead of storing answers as a JSON object.  
+### 3. UI/UX Enhancements
+
+- Fix overlapping “Live Quiz Available” tag
+- Align “Start Quiz” button consistently
+- Format timestamps to local user timezone
+
+### 4. Navigation & Stability
+
+- Prevent crash on “Previous” button
+- Disable “Next” until an answer is selected
+- Preserve LiveView state between questions
+
+### 5. Database Schema
+
+- Store quiz answers as an array of strings (JSON array) for performance and readability
 
 ---
 
-References
+## 📚 References
 
-Official Phoenix Framework Website: https://www.phoenixframework.org/
+- [Phoenix Framework](https://www.phoenixframework.org/)
+- [Phoenix Guides](https://hexdocs.pm/phoenix/overview.html)
+- [Phoenix Docs](https://hexdocs.pm/phoenix)
+- [Phoenix Forum](https://elixirforum.com/c/phoenix-forum)
+- [Phoenix GitHub](https://github.com/phoenixframework/phoenix)
 
-Phoenix Guides: https://hexdocs.pm/phoenix/overview.html
+---
 
-Phoenix Docs: https://hexdocs.pm/phoenix
+## 📜 License
 
-Phoenix Forum: https://elixirforum.com/c/phoenix-forum
-
-Phoenix GitHub Source: https://github.com/phoenixframework/phoenix
-
-
+This project is for educational and learning purposes only.
